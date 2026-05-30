@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Escape 3D — Solve the Maze, Free the Arrows</title>
+    <meta name="description" content="Arrow Escape 3D is a challenging 3D puzzle game. Navigate arrows through intricate mazes, solve mind-bending puzzles, and escape before time runs out!">
+    <meta name="keywords" content="Arrow Escape 3D, puzzle game, maze game, 3D puzzle, mobile game, brain teaser, arrow maze">
+    <meta name="author" content="B Horizon Studios">
+    <meta name="theme-color" content="#1a1a1a">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Arrow Escape 3D — Solve the Maze, Free the Arrows">
+    <meta property="og:description" content="Navigate arrows through intricate mazes. Solve puzzles. Beat the clock. Download now!">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/screenshot1.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Particles Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="brand-icon">🏹</span>
+            <span class="brand-text">B Horizon Studios</span>
+        </div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#screenshots">Screenshots</a>
+            <a href="#download" class="nav-cta">Download</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🎮 NEW PUZZLE GAME</div>
+            <h1 class="hero-title">
+                <span class="title-arrow">ARROW</span>
+                <span class="title-escape">ESCAPE</span>
+                <span class="title-3d">3D</span>
+            </h1>
+            <p class="hero-subtitle">Navigate arrows through intricate mazes. Solve mind-bending puzzles. Beat the clock. Can you escape them all?</p>
+            <div class="hero-buttons">
+                <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.arrowescape" class="btn btn-primary" id="download-hero">
+                    <svg class="play-icon" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+                    Download on Google Play
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Levels</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">4.5★</span>
+                    <span class="stat-label">Rating</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">Free</span>
+                    <span class="stat-label">To Play</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-phone">
+            <div class="phone-frame">
+                <img src="images/screenshot1.png" alt="Arrow Escape 3D Main Menu" class="phone-screen" id="hero-screenshot">
+            </div>
+            <div class="phone-glow"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <span class="section-tag">WHY PLAY?</span>
+            <h2 class="section-title">Master the Maze</h2>
+            <p class="section-subtitle">Every level is a new challenge. Think fast, plan ahead, and find the path to escape.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🧩</div>
+                <h3>Mind-Bending Puzzles</h3>
+                <p>Hundreds of handcrafted levels that test your spatial thinking and logic skills.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏱️</div>
+                <h3>Beat the Clock</h3>
+                <p>Race against time to solve each maze before the timer runs out. Every second counts!</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Increasing Difficulty</h3>
+                <p>Start with simple paths and work your way up to incredibly complex mazes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💡</div>
+                <h3>Hint System</h3>
+                <p>Stuck on a level? Use hints to reveal the path forward and keep progressing.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">❤️</div>
+                <h3>Health System</h3>
+                <p>Avoid blocked paths! Lose health when arrows collide and manage your lives wisely.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3>Stunning 3D Graphics</h3>
+                <p>Beautiful metallic visuals with glowing arrows and smooth animations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots" id="screenshots">
+        <div class="section-header">
+            <span class="section-tag">GALLERY</span>
+            <h2 class="section-title">See It In Action</h2>
+            <p class="section-subtitle">Explore the world of Arrow Escape 3D through these in-game screenshots.</p>
+        </div>
+        <div class="screenshots-carousel">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="screenshot-card">
+                    <img src="images/screenshot1.png" alt="Arrow Escape 3D - Main Menu" loading="lazy">
+                    <div class="screenshot-label">Main Menu</div>
+                </div>
+                <div class="screenshot-card">
+                    <img src="images/screenshot5.png" alt="Arrow Escape 3D - Level 3" loading="lazy">
+                    <div class="screenshot-label">Early Puzzle</div>
+                </div>
+                <div class="screenshot-card">
+                    <img src="images/screenshot2.png" alt="Arrow Escape 3D - Complex Maze" loading="lazy">
+                    <div class="screenshot-label">Complex Maze</div>
+                </div>
+                <div class="screenshot-card">
+                    <img src="images/screenshot3.png" alt="Arrow Escape 3D - Blocked Arrows" loading="lazy">
+                    <div class="screenshot-label">Blocked Path</div>
+                </div>
+                <div class="screenshot-card">
+                    <img src="images/screenshot4.png" alt="Arrow Escape 3D - Tutorial" loading="lazy">
+                    <div class="screenshot-label">Tutorial</div>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-btn" id="prevBtn" aria-label="Previous screenshot">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"/></svg>
+                </button>
+                <div class="carousel-dots" id="carouselDots"></div>
+                <button class="carousel-btn" id="nextBtn" aria-label="Next screenshot">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Download Section -->
+    <section class="download-section" id="download">
+        <div class="download-content">
+            <h2 class="download-title">Ready to Escape?</h2>
+            <p class="download-subtitle">Download Arrow Escape 3D for free and challenge yourself with hundreds of puzzles.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.arrowescape" class="btn btn-primary btn-large" id="download-cta">
+                <svg class="play-icon" viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+                Get it on Google Play
+            </a>
+        </div>
+        <div class="download-glow"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="brand-icon">🏹</span>
+                <span>B Horizon Studios</span>
+            </div>
+            <div class="footer-links">
+                <a href="https://sites.google.com/d/1FXc5W3XoiRQvYkzrUAt1S39sZp57Bnpz/p/1FqeeDmwgIzQ8NMLKgmIMjVDB0pWTrLhO/edit" target="_blank">Privacy Policy</a>
+                <a href="mailto:bhorizonstudios@gmail.com">Contact</a>
+            </div>
+            <p class="footer-copy">&copy; 2025 B Horizon Studios. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
