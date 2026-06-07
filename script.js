@@ -1,7 +1,7 @@
 // ── Floating Particles ───────────────────────────────────────
 (function createParticles() {
     const container = document.getElementById('particles');
-    const count = 30;
+    const count = 25;
 
     for (let i = 0; i < count; i++) {
         const p = document.createElement('div');
@@ -16,76 +16,34 @@
     }
 })();
 
-// ── Screenshot Carousel ──────────────────────────────────────
-(function initCarousel() {
-    const track = document.getElementById('carouselTrack');
-    const cards = track.querySelectorAll('.screenshot-card');
-    const dotsContainer = document.getElementById('carouselDots');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
+// ── Navbar Scroll Effect ─────────────────────────────────────
+(function initNavbar() {
+    const navbar = document.getElementById('navbar');
 
-    let currentIndex = 0;
-    let cardWidth = 244; // 220px + 24px gap
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 80);
+    });
+})();
 
-    function updateCardWidth() {
-        if (window.innerWidth <= 480) {
-            cardWidth = 204; // 180px + 24px
-        } else {
-            cardWidth = 244;
-        }
-    }
+// ── Mobile Menu ──────────────────────────────────────────────
+(function initMobileMenu() {
+    const hamburger = document.getElementById('navHamburger');
+    const menu = document.getElementById('mobileMenu');
 
-    // Create dots
-    cards.forEach((_, i) => {
-        const dot = document.createElement('div');
-        dot.classList.add('carousel-dot');
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goTo(i));
-        dotsContainer.appendChild(dot);
+    if (!hamburger || !menu) return;
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        menu.classList.toggle('active');
     });
 
-    function goTo(index) {
-        const maxIndex = Math.max(0, cards.length - Math.floor(track.parentElement.offsetWidth / cardWidth));
-        currentIndex = Math.max(0, Math.min(index, maxIndex));
-        track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-        updateDots();
-    }
-
-    function updateDots() {
-        dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentIndex);
+    // Close menu on link click
+    menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            menu.classList.remove('active');
         });
-    }
-
-    prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
-    nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
-
-    // Touch/swipe support
-    let startX = 0;
-    let isDragging = false;
-
-    track.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        isDragging = true;
-    }, { passive: true });
-
-    track.addEventListener('touchend', (e) => {
-        if (!isDragging) return;
-        isDragging = false;
-        const diff = startX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 50) {
-            if (diff > 0) goTo(currentIndex + 1);
-            else goTo(currentIndex - 1);
-        }
-    }, { passive: true });
-
-    // Resize handler
-    window.addEventListener('resize', () => {
-        updateCardWidth();
-        goTo(currentIndex);
     });
-
-    updateCardWidth();
 })();
 
 // ── Scroll Reveal ────────────────────────────────────────────
@@ -98,26 +56,31 @@
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.feature-card, .screenshot-card').forEach((el, i) => {
-        el.style.transitionDelay = `${i * 0.08}s`;
+    const selectors = [
+        '.about-stat-card',
+        '.game-showcase',
+        '.gallery-card',
+        '.coming-soon-card',
+        '.contact-card'
+    ];
+
+    document.querySelectorAll(selectors.join(', ')).forEach((el, i) => {
+        el.style.transitionDelay = `${(i % 4) * 0.1}s`;
         observer.observe(el);
     });
 })();
 
-// ── Navbar scroll effect ─────────────────────────────────────
-(function initNavbar() {
-    const navbar = document.querySelector('.navbar');
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        if (scrollY > 100) {
-            navbar.style.borderBottomColor = 'rgba(212, 166, 66, 0.2)';
-            navbar.style.background = 'rgba(13, 13, 13, 0.95)';
-        } else {
-            navbar.style.borderBottomColor = 'rgba(212, 166, 66, 0.12)';
-            navbar.style.background = 'rgba(13, 13, 13, 0.85)';
+// ── Smooth scroll for anchor links ───────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (target) {
+            e.preventDefault();
+            const navHeight = document.querySelector('.navbar').offsetHeight;
+            const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+            window.scrollTo({ top, behavior: 'smooth' });
         }
-        lastScroll = scrollY;
     });
-})();
+});
