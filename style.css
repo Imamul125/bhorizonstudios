@@ -370,17 +370,19 @@ a:hover { color: var(--gold-light); }
     color: var(--text-muted);
 }
 
-/* Floating Phone */
-.hero-phone-wrapper {
+/* Floating Banner */
+.hero-banner-wrapper {
     position: relative;
     z-index: 2;
     flex-shrink: 0;
     animation: fadeInRight 1s ease 0.3s both;
+    width: 540px;
+    max-width: 100%;
 }
 
-.hero-phone {
-    width: 260px;
-    border-radius: 32px;
+.hero-banner {
+    width: 100%;
+    border-radius: 24px;
     overflow: hidden;
     border: 2px solid rgba(212, 166, 66, 0.15);
     box-shadow:
@@ -389,38 +391,29 @@ a:hover { color: var(--gold-light); }
         inset 0 0 0 1px rgba(255, 255, 255, 0.05);
     background: #0a0a0a;
     position: relative;
-    animation: phone-float 6s ease-in-out infinite;
+    animation: banner-float 6s ease-in-out infinite;
 }
 
-@keyframes phone-float {
+@keyframes banner-float {
     0%, 100% { transform: translateY(0) rotate(0deg); }
     50% { transform: translateY(-12px) rotate(1deg); }
 }
 
-.hero-phone-notch {
-    position: absolute;
-    top: 8px; left: 50%; transform: translateX(-50%);
-    width: 80px; height: 20px;
-    background: #0a0a0a;
-    border-radius: 0 0 16px 16px;
-    z-index: 3;
-}
-
-.hero-phone-screen {
+.hero-banner-image {
     width: 100%;
     display: block;
 }
 
-.hero-phone-reflection {
+.hero-banner-reflection {
     position: absolute;
-    bottom: -120px; left: 50%; transform: translateX(-50%) scaleY(-1);
-    width: 260px;
+    bottom: -80px; left: 50%; transform: translateX(-50%) scaleY(-1);
+    width: 100%;
     height: 120px;
     background: linear-gradient(to bottom, rgba(212, 166, 66, 0.06), transparent);
     filter: blur(8px);
     mask-image: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
     -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
-    border-radius: 32px;
+    border-radius: 24px;
 }
 
 /* ── Marquee ──────────────────────────────────────────────── */
