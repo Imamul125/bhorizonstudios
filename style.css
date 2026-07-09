@@ -382,14 +382,6 @@ a:hover { color: var(--gold-light); }
 
 .hero-banner {
     width: 100%;
-    border-radius: 24px;
-    overflow: hidden;
-    border: 2px solid rgba(212, 166, 66, 0.15);
-    box-shadow:
-        0 40px 80px rgba(0, 0, 0, 0.6),
-        0 0 80px rgba(212, 166, 66, 0.12),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-    background: #0a0a0a;
     position: relative;
     animation: banner-float 6s ease-in-out infinite;
 }
@@ -402,6 +394,27 @@ a:hover { color: var(--gold-light); }
 .hero-banner-image {
     width: 100%;
     display: block;
+}
+
+.hero-games-icons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-icon {
+    width: 180px;
+    height: 180px;
+    border-radius: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(212, 166, 66, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    object-fit: cover;
+}
+
+.hero-icon:hover {
+    transform: translateY(-12px) scale(1.05);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 0 2px rgba(212, 166, 66, 0.6);
 }
 
 .hero-banner-reflection {
