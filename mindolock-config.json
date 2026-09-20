@@ -5,6 +5,6 @@
   },
   "android": {
     "minVersion": "1.0.0",
-    "minBuildNumber": "5"
+    "minBuildNumber": "7"
   }
 }
