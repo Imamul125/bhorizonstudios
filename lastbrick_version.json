@@ -2,5 +2,8 @@
     "latest_version": "2.0.9",
     "latest_version_code": 16,
     "force_update": false,
-    "update_message": "A new version of Last Brick is available with bug fixes and improvements!"
+    "update_message": "A new version of Last Brick is available with bug fixes and improvements!",
+    "latest_version_ios": "2.1.0",
+    "force_update_ios": false,
+    "update_message_ios": "A new version of Last Brick is available on the App Store!"
 }
