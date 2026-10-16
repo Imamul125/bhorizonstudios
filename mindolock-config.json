@@ -4,7 +4,7 @@
     "minBuildNumber": "37"
   },
   "android": {
-    "minVersion": "1.0.0",
-    "minBuildNumber": "8"
+    "minVersion": "1.1.0",
+    "minBuildNumber": "20"
   }
 }
