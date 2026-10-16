@@ -1,7 +1,7 @@
 {
   "ios": {
     "minVersion": "1.0.0",
-    "minBuildNumber": "23"
+    "minBuildNumber": "39"
   },
   "android": {
     "minVersion": "1.0.0",
