@@ -13,7 +13,7 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="BHorizon Studios — Mobile Games & Apps">
-    <meta property="og:description" content="Games that thrill. Apps that sharpen. Explore Mindolock, Last Brick and Arrow Escape Time Trap.">
+    <meta property="og:description" content="Games that thrill. Apps that sharpen. Explore Mindolock, Last Brick and Arrow Escape Time Trap on the App Store and Google Play.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="images/screenshot1.jpg">
 
@@ -62,7 +62,7 @@
                 <a href="#studio">Studio</a>
                 <a href="#contact">Contact</a>
             </nav>
-            <a href="https://play.google.com/store/apps/dev?id=7368937019671498498" target="_blank" rel="noopener" class="gnav-icon" aria-label="BHorizon Studios on Google Play">
+            <a href="https://play.google.com/store/apps/developer?id=BHorizon+Studios&amp;hl=en_IN" target="_blank" rel="noopener" class="gnav-icon" aria-label="BHorizon Studios on Google Play">
                 <svg width="15" height="15" aria-hidden="true"><use href="#i-play"/></svg>
             </a>
             <button class="gnav-burger" id="gnavBurger" aria-label="Menu" aria-expanded="false" aria-controls="gnavMenu">
@@ -83,8 +83,8 @@
         <div class="wrap localnav-inner">
             <a href="#top" class="localnav-title">BHorizon Studios</a>
             <div class="localnav-actions">
-                <a href="#lineup" class="localnav-link">Overview</a>
-                <a href="https://play.google.com/store/apps/dev?id=7368937019671498498" target="_blank" rel="noopener" class="pill pill-sm">Download</a>
+                <a href="#showcase" class="localnav-link">Overview</a>
+                <a href="#lineup" class="pill pill-sm">Download</a>
             </div>
         </div>
     </div>
@@ -119,7 +119,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="https://play.google.com/store/apps/dev?id=7368937019671498498" target="_blank" rel="noopener">
+                    <a href="https://play.google.com/store/apps/developer?id=BHorizon+Studios&amp;hl=en_IN" target="_blank" rel="noopener">
                         <span class="chapternav-glyph"><svg width="24" height="24" aria-hidden="true"><use href="#i-play"/></svg></span>
                         <span>Google Play</span>
                     </a>
@@ -134,14 +134,17 @@
         </section>
 
         <!-- ═══════════════ HERO TILE ═══════════════ -->
-        <section class="hero" aria-labelledby="heroTitle">
+        <section class="hero" aria-labelledby="heroTitle" data-nav="dark">
             <div class="hero-copy">
                 <p class="eyebrow eyebrow-new">New</p>
                 <h2 class="hero-title" id="heroTitle">Mindolock</h2>
                 <p class="hero-sub">Train your brain. Unlock your potential.</p>
                 <div class="cta-row">
-                    <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.mindolock" target="_blank" rel="noopener" class="pill">Get it on Google Play</a>
-                    <a href="#p-mindolock" class="pill pill-outline">Learn more</a>
+                    <a href="https://apps.apple.com/us/app/mindolock/id6812595599" target="_blank" rel="noopener" class="pill">App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.mindolock" target="_blank" rel="noopener" class="pill">Google Play</a>
+                </div>
+                <div class="cta-row hero-more">
+                    <a href="#p-mindolock" class="text-link">Learn more <svg width="12" height="12" aria-hidden="true"><use href="#i-chevron"/></svg></a>
                 </div>
             </div>
             <div class="hero-phones" aria-hidden="true">
@@ -151,11 +154,29 @@
             </div>
         </section>
 
+        <!-- ═══════════════ SCROLL VIDEO ═══════════════ -->
+        <!-- The video is scrubbed by scroll position. To use your own footage, replace the files in videos/
+             (encode with a keyframe on every frame for smooth scrubbing — see videos/render_showcase.py). -->
+        <section class="scrolly" id="showcase" aria-labelledby="scrollyTitle" data-nav="dark">
+            <div class="scrolly-sticky">
+                <div class="scrolly-captions">
+                    <h2 class="visually-hidden" id="scrollyTitle">Our titles</h2>
+                    <p class="scrolly-caption is-active" data-from="0" data-to="0.3">Three worlds.</p>
+                    <p class="scrolly-caption" data-from="0.3" data-to="0.62">One studio.</p>
+                    <p class="scrolly-caption" data-from="0.62" data-to="2">Now on the App Store<br>and Google Play.</p>
+                </div>
+                <video class="scrolly-video" id="scrollyVideo" muted playsinline preload="auto" aria-hidden="true"
+                    data-wide="videos/showcase-wide.mp4" data-tall="videos/showcase-tall.mp4"
+                    data-poster-wide="videos/showcase-wide.jpg" data-poster-tall="videos/showcase-tall.jpg"></video>
+                <div class="scrolly-bar" aria-hidden="true"><span></span></div>
+            </div>
+        </section>
+
         <!-- ═══════════════ LINEUP ═══════════════ -->
         <section class="section" id="lineup">
             <div class="wrap section-head">
                 <h2 class="section-title">Explore the lineup.</h2>
-                <a href="https://play.google.com/store/apps/dev?id=7368937019671498498" target="_blank" rel="noopener" class="more-link">Follow on Google Play <svg width="12" height="12" aria-hidden="true"><use href="#i-chevron"/></svg></a>
+                <a href="https://play.google.com/store/apps/developer?id=BHorizon+Studios&amp;hl=en_IN" target="_blank" rel="noopener" class="more-link">Follow on Google Play <svg width="12" height="12" aria-hidden="true"><use href="#i-chevron"/></svg></a>
             </div>
 
             <div class="wrap">
@@ -178,11 +199,10 @@
                     <p class="model-tagline">Short daily workouts for focus, memory and observation.</p>
                     <p class="model-meta">App · Health &amp; Fitness</p>
                     <div class="cta-row">
-                        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.mindolock" target="_blank" rel="noopener" class="pill">Download</a>
-                        <a href="#s-mindolock" class="text-link" data-screens="mindolock">Screens <svg width="11" height="11" aria-hidden="true"><use href="#i-chevron"/></svg></a>
+                        <a href="https://apps.apple.com/us/app/mindolock/id6812595599" target="_blank" rel="noopener" class="pill" aria-label="Mindolock on the App Store">App Store</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.mindolock" target="_blank" rel="noopener" class="pill" aria-label="Mindolock on Google Play">Google Play</a>
                     </div>
-                    <!-- iOS: replace this line with an App Store link when it goes live -->
-                    <p class="model-soon">Coming soon to the App Store</p>
+                    <a href="#s-mindolock" class="text-link model-screens" data-screens="mindolock">See screenshots <svg width="11" height="11" aria-hidden="true"><use href="#i-chevron"/></svg></a>
                     <ul class="model-features">
                         <li><svg width="28" height="28" aria-hidden="true"><use href="#i-target"/></svg><b>Focus</b><span>Rhythm and timing drills</span></li>
                         <li><svg width="28" height="28" aria-hidden="true"><use href="#i-memory"/></svg><b>Memory</b><span>Sequence and name recall</span></li>
@@ -202,11 +222,10 @@
                     <p class="model-tagline">Break the bricks. Lower the cat. Don't let it fall.</p>
                     <p class="model-meta">Game · Physics Puzzle</p>
                     <div class="cta-row">
-                        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.lastbrick" target="_blank" rel="noopener" class="pill">Download</a>
-                        <a href="#s-lastbrick" class="text-link" data-screens="lastbrick">Screens <svg width="11" height="11" aria-hidden="true"><use href="#i-chevron"/></svg></a>
+                        <a href="https://apps.apple.com/us/app/last-brick-3d/id6814111682" target="_blank" rel="noopener" class="pill" aria-label="Last Brick on the App Store">App Store</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.lastbrick" target="_blank" rel="noopener" class="pill" aria-label="Last Brick on Google Play">Google Play</a>
                     </div>
-                    <!-- iOS: replace this line with an App Store link when it goes live -->
-                    <p class="model-soon">Coming soon to the App Store</p>
+                    <a href="#s-lastbrick" class="text-link model-screens" data-screens="lastbrick">See screenshots <svg width="11" height="11" aria-hidden="true"><use href="#i-chevron"/></svg></a>
                     <ul class="model-features">
                         <li><svg width="28" height="28" aria-hidden="true"><use href="#i-heart"/></svg><b>Cute cat</b><span>Keep it safe all the way down</span></li>
                         <li><svg width="28" height="28" aria-hidden="true"><use href="#i-burst"/></svg><b>Explosive bricks</b><span>Every tap changes the tower</span></li>
@@ -226,11 +245,10 @@
                     <p class="model-tagline">Navigate the maze. Beat the clock.</p>
                     <p class="model-meta">Game · Puzzle</p>
                     <div class="cta-row">
-                        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.arrowescape" target="_blank" rel="noopener" class="pill" id="download-arrow-escape">Download</a>
-                        <a href="#s-arrowescape" class="text-link" data-screens="arrowescape">Screens <svg width="11" height="11" aria-hidden="true"><use href="#i-chevron"/></svg></a>
+                        <a href="https://apps.apple.com/us/app/arrow-escaper/id6816338832" target="_blank" rel="noopener" class="pill" aria-label="Arrow Escape on the App Store">App Store</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.arrowescape" target="_blank" rel="noopener" class="pill" id="download-arrow-escape" aria-label="Arrow Escape on Google Play">Google Play</a>
                     </div>
-                    <!-- iOS: replace this line with an App Store link when it goes live -->
-                    <p class="model-soon">Coming soon to the App Store</p>
+                    <a href="#s-arrowescape" class="text-link model-screens" data-screens="arrowescape">See screenshots <svg width="11" height="11" aria-hidden="true"><use href="#i-chevron"/></svg></a>
                     <ul class="model-features">
                         <li><svg width="28" height="28" aria-hidden="true"><use href="#i-maze"/></svg><b>100+ levels</b><span>Handcrafted mazes</span></li>
                         <li><svg width="28" height="28" aria-hidden="true"><use href="#i-trophy"/></svg><b>Leaderboards</b><span>Compete worldwide</span></li>
@@ -347,7 +365,7 @@
             <ul class="why">
                 <li class="why-card reveal">
                     <svg width="36" height="36" aria-hidden="true" class="why-icon c-blue"><use href="#i-play"/></svg>
-                    <p><b class="c-blue">3 titles on Google Play.</b> Two games and one app, with more on the way.</p>
+                    <p><b class="c-blue">3 titles, 2 stores.</b> Two games and one app on the App Store and Google Play.</p>
                 </li>
                 <li class="why-card reveal">
                     <svg width="36" height="36" aria-hidden="true" class="why-icon c-orange"><use href="#i-maze"/></svg>
@@ -355,7 +373,7 @@
                 </li>
                 <li class="why-card reveal">
                     <svg width="36" height="36" aria-hidden="true" class="why-icon c-green"><use href="#i-phone"/></svg>
-                    <p><b class="c-green">iOS is coming.</b> All of our titles are headed to the App Store.</p>
+                    <p><b class="c-green">Now on iPhone.</b> Mindolock, Last Brick and Arrow Escape are on the App Store.</p>
                 </li>
                 <li class="why-card reveal">
                     <svg width="36" height="36" aria-hidden="true" class="why-icon c-purple"><use href="#i-chart"/></svg>
@@ -385,23 +403,24 @@
     <footer class="footer">
         <div class="wrap">
             <div class="footer-notes">
-                <p>Google Play and the Google Play logo are trademarks of Google LLC. App Store is a service mark of Apple Inc. iOS versions of our titles are in development; availability will be announced on this page.</p>
+                <p>Google Play and the Google Play logo are trademarks of Google LLC. App Store is a service mark of Apple Inc.</p>
             </div>
             <div class="footer-dir">
                 <div>
                     <h3>Apps</h3>
-                    <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.mindolock" target="_blank" rel="noopener">Mindolock</a>
+                    <a href="#p-mindolock">Mindolock</a>
                 </div>
                 <div>
                     <h3>Games</h3>
-                    <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.lastbrick" target="_blank" rel="noopener">Last Brick</a>
-                    <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.arrowescape" target="_blank" rel="noopener">Arrow Escape Time Trap</a>
+                    <a href="#p-lastbrick">Last Brick</a>
+                    <a href="#p-arrowescape">Arrow Escape Time Trap</a>
                 </div>
                 <div>
                     <h3>Studio</h3>
                     <a href="#studio">About</a>
                     <a href="#screens">Screens</a>
-                    <a href="https://play.google.com/store/apps/dev?id=7368937019671498498" target="_blank" rel="noopener">Google Play page</a>
+                    <a href="https://apps.apple.com/us/app/mindolock/id6812595599" target="_blank" rel="noopener">App Store</a>
+                    <a href="https://play.google.com/store/apps/developer?id=BHorizon+Studios&amp;hl=en_IN" target="_blank" rel="noopener">Google Play</a>
                 </div>
                 <div>
                     <h3>Contact</h3>
@@ -425,37 +444,55 @@
         <h2 class="modal-title">Train your brain. Unlock your potential.</h2>
         <p><b>Short, focused daily workouts</b> that sharpen your focus, memory, observation and patience. Each session takes just a few minutes, so it fits into any day.</p>
         <p><b>Four ways to train.</b> Rhythm and timing drills for focus, sequence and name recall for memory, and visual scene scanning for observation.</p>
-        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.mindolock" target="_blank" rel="noopener" class="pill">Get it on Google Play</a>
+        <div class="cta-row start">
+            <a href="https://apps.apple.com/us/app/mindolock/id6812595599" target="_blank" rel="noopener" class="pill" aria-label="Mindolock on the App Store">App Store</a>
+            <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.mindolock" target="_blank" rel="noopener" class="pill" aria-label="Mindolock on Google Play">Google Play</a>
+        </div>
     </template>
     <template id="m-stats">
         <p class="modal-eyebrow">Brain stats</p>
         <h2 class="modal-title">See small exercises turn into big results.</h2>
         <p><b>Track your brain stats</b> across every skill you train, build streaks that keep you coming back, and get insights into how you're improving over time.</p>
-        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.mindolock" target="_blank" rel="noopener" class="pill">Get it on Google Play</a>
+        <div class="cta-row start">
+            <a href="https://apps.apple.com/us/app/mindolock/id6812595599" target="_blank" rel="noopener" class="pill" aria-label="Mindolock on the App Store">App Store</a>
+            <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.mindolock" target="_blank" rel="noopener" class="pill" aria-label="Mindolock on Google Play">Google Play</a>
+        </div>
     </template>
     <template id="m-lastbrick">
         <p class="modal-eyebrow">Last Brick</p>
         <h2 class="modal-title">Just don't let the cat fall.</h2>
         <p><b>Tap and break bricks</b> to safely lower the cat to the ground. Every level tests your timing, logic and physics skills — and they keep getting trickier.</p>
-        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.lastbrick" target="_blank" rel="noopener" class="pill">Get it on Google Play</a>
+        <div class="cta-row start">
+            <a href="https://apps.apple.com/us/app/last-brick-3d/id6814111682" target="_blank" rel="noopener" class="pill" aria-label="Last Brick on the App Store">App Store</a>
+            <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.lastbrick" target="_blank" rel="noopener" class="pill" aria-label="Last Brick on Google Play">Google Play</a>
+        </div>
     </template>
     <template id="m-physics">
         <p class="modal-eyebrow">Physics</p>
         <h2 class="modal-title">Explosive bricks. Timed levels.</h2>
         <p><b>Every brick you break changes the tower.</b> Some explode, some shift the balance, and the clock is always running. Plan ahead, then tap with confidence.</p>
-        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.lastbrick" target="_blank" rel="noopener" class="pill">Get it on Google Play</a>
+        <div class="cta-row start">
+            <a href="https://apps.apple.com/us/app/last-brick-3d/id6814111682" target="_blank" rel="noopener" class="pill" aria-label="Last Brick on the App Store">App Store</a>
+            <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.lastbrick" target="_blank" rel="noopener" class="pill" aria-label="Last Brick on Google Play">Google Play</a>
+        </div>
     </template>
     <template id="m-arrowescape">
         <p class="modal-eyebrow">Arrow Escape Time Trap</p>
         <h2 class="modal-title">Can you escape them all?</h2>
         <p><b>Navigate arrows through intricate mazes</b> and beat the clock. Handcrafted levels, hints when you need them and stunning 3D metallic visuals.</p>
-        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.arrowescape" target="_blank" rel="noopener" class="pill">Get it on Google Play</a>
+        <div class="cta-row start">
+            <a href="https://apps.apple.com/us/app/arrow-escaper/id6816338832" target="_blank" rel="noopener" class="pill" aria-label="Arrow Escape on the App Store">App Store</a>
+            <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.arrowescape" target="_blank" rel="noopener" class="pill" aria-label="Arrow Escape on Google Play">Google Play</a>
+        </div>
     </template>
     <template id="m-glory">
         <p class="modal-eyebrow">Achievements &amp; leaderboards</p>
         <h2 class="modal-title">Achieve. Unlock. Dominate.</h2>
         <p><b>Earn badges</b> as you clear challenges, then <b>climb the global leaderboards</b> to show your skills to the world.</p>
-        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.arrowescape" target="_blank" rel="noopener" class="pill">Get it on Google Play</a>
+        <div class="cta-row start">
+            <a href="https://apps.apple.com/us/app/arrow-escaper/id6816338832" target="_blank" rel="noopener" class="pill" aria-label="Arrow Escape on the App Store">App Store</a>
+            <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.arrowescape" target="_blank" rel="noopener" class="pill" aria-label="Arrow Escape on Google Play">Google Play</a>
+        </div>
     </template>
 
     <dialog class="modal" id="modal" aria-labelledby="modalTitle">

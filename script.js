@@ -31,6 +31,72 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     new IntersectionObserver(([entry]) => {
         local.classList.toggle('stuck', !entry.isIntersecting);
     }).observe(gnav);
+
+    // Switch to the dark style while a black section sits under the bar
+    const darkUnder = new Set();
+    const darkObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => e.isIntersecting ? darkUnder.add(e.target) : darkUnder.delete(e.target));
+        local.classList.toggle('dark', darkUnder.size > 0);
+    }, { rootMargin: '0px 0px -95% 0px' });
+    document.querySelectorAll('[data-nav="dark"]').forEach(el => darkObserver.observe(el));
+})();
+
+// ── Scroll-scrubbed video ────────────────────────────────────
+(function initScrollVideo() {
+    const section = document.getElementById('showcase');
+    const video = document.getElementById('scrollyVideo');
+    if (!section || !video) return;
+    const captions = [...section.querySelectorAll('.scrolly-caption')];
+    const bar = section.querySelector('.scrolly-bar');
+    const tall = window.matchMedia('(max-aspect-ratio: 1/1)');
+
+    const setCaption = p => captions.forEach(c => c.classList.toggle('is-active', p >= +c.dataset.from && p < +c.dataset.to));
+
+    // Portrait screens get the tall cut, everything else the wide one
+    function pickSource() {
+        const key = tall.matches ? 'tall' : 'wide';
+        if (video.dataset.current === key) return;
+        video.dataset.current = key;
+        video.poster = key === 'tall' ? video.dataset.posterTall : video.dataset.posterWide;
+        video.preload = reduceMotion ? 'none' : 'auto';
+        video.src = video.dataset[key];
+        // iOS Safari only paints seeked frames once the video has played
+        if (!reduceMotion) video.play()?.then(() => video.pause()).catch(() => {});
+    }
+    pickSource();
+    tall.addEventListener('change', pickSource);
+
+    if (reduceMotion) { section.classList.add('static'); setCaption(1); return; }
+
+    let target = 0, current = 0, raf = null;
+
+    function progress() {
+        const r = section.getBoundingClientRect();
+        const total = r.height - window.innerHeight;
+        return total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
+    }
+
+    function tick() {
+        current += (target - current) * 0.18;
+        if (Math.abs(target - current) < 0.0005) current = target;
+        if (video.duration) {
+            const time = current * (video.duration - 0.05);
+            if (Math.abs(video.currentTime - time) > 0.008) video.currentTime = time;
+        }
+        raf = current === target ? null : requestAnimationFrame(tick);
+    }
+
+    function onScroll() {
+        target = progress();
+        setCaption(target);
+        if (bar) bar.style.setProperty('--p', target);
+        if (!raf) raf = requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    video.addEventListener('loadedmetadata', onScroll);
+    onScroll();
 })();
 
 // ── Scroll reveal ────────────────────────────────────────────
