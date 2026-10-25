@@ -228,7 +228,6 @@ section[id], [id^="p-"] { scroll-margin-top: 60px; }
 }
 .hero-phone { width: auto; border-radius: 28px 28px 0 0; object-fit: cover; object-position: top; }
 .hero-phone.main { height: 460px; }
-.hero-phone.side { height: 380px; opacity: 0.55; }
 
 /* ── Scroll-scrubbed video ────────────────────────────────── */
 .scrolly { position: relative; height: 300vh; background: #000; color: #f5f5f7; }
@@ -554,7 +553,6 @@ section[id], [id^="p-"] { scroll-margin-top: 60px; }
     .hero-sub { font-size: 21px; }
     .hero-phones { height: 380px; }
     .hero-phone.main { height: 380px; }
-    .hero-phone.side { height: 310px; }
 
     .section { padding: 72px 0 80px; }
     .section-title, .contact-title { font-size: 40px; }
@@ -585,7 +583,6 @@ section[id], [id^="p-"] { scroll-margin-top: 60px; }
     .hero-sub { font-size: 19px; }
     .hero-phones { height: 330px; gap: 12px; }
     .hero-phone.main { height: 330px; }
-    .hero-phone.side { height: 260px; }
     .hero .cta-row { gap: 12px; }
     .section-title, .contact-title { font-size: 32px; }
     .scrolly-caption { font-size: 32px; }
