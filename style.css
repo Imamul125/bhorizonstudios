@@ -221,13 +221,41 @@ section[id], [id^="p-"] { scroll-margin-top: 60px; }
 .hero-more { margin-top: 18px; }
 .hero .text-link { color: var(--link-dark); font-size: 19px; }
 
+.hero-stage {
+    position: relative;
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 64px;
+    max-width: 1100px; margin: 52px auto 0;
+}
+/* Soft glow behind the phone */
+.hero-stage::before {
+    content: ""; position: absolute; left: 50%; top: 55%;
+    width: 720px; height: 720px; transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(34, 211, 166, 0.2), transparent 62%);
+    pointer-events: none;
+}
+.hero-feats { position: relative; display: flex; flex-direction: column; gap: 48px; padding-bottom: 40px; }
+.hero-feats-left { text-align: right; align-items: flex-end; }
+.hero-feats-right { text-align: left; align-items: flex-start; }
+.hero-feats li { display: flex; flex-direction: column; gap: 4px; max-width: 240px; }
+.hero-feats-left li { align-items: flex-end; }
+.hero-feats svg { color: #2fe0b5; margin-bottom: 8px; }
+.hero-feats b { font-size: 24px; line-height: 1.17; font-weight: 600; letter-spacing: 0.009em; color: #f5f5f7; }
+.hero-feats span { font-size: 17px; color: #86868b; }
+
 .hero-phones {
-    display: flex; justify-content: center; align-items: flex-end; gap: 22px;
-    margin-top: 52px;
-    height: 460px;
+    position: relative;
+    display: flex; justify-content: center; align-items: flex-end;
+    height: 460px; align-self: end;
 }
 .hero-phone { width: auto; border-radius: 28px 28px 0 0; object-fit: cover; object-position: top; }
-.hero-phone.main { height: 460px; }
+.hero-phone.main {
+    height: 460px;
+    /* Fade the screenshot's edges so its dark background melts into the glow */
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent), linear-gradient(to bottom, #000 82%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent), linear-gradient(to bottom, #000 82%, transparent);
+    mask-composite: intersect;
+}
 
 /* ── Scroll-scrubbed video ────────────────────────────────── */
 .scrolly { position: relative; height: 300vh; background: #000; color: #f5f5f7; }
@@ -534,6 +562,9 @@ section[id], [id^="p-"] { scroll-margin-top: 60px; }
     .lineup { grid-template-columns: repeat(2, 1fr); max-width: calc(760px + var(--gutter) * 2); }
     .card img { height: 330px; }
     .model-media { height: 360px; }
+    .hero-stage { gap: 36px; }
+    .hero-feats b { font-size: 21px; }
+    .hero-feats span { font-size: 15px; }
 }
 
 @media (max-width: 833px) {
@@ -553,6 +584,22 @@ section[id], [id^="p-"] { scroll-margin-top: 60px; }
     .hero-sub { font-size: 21px; }
     .hero-phones { height: 380px; }
     .hero-phone.main { height: 380px; }
+
+    /* Features sit as a 2x2 grid above the phone */
+    .hero-stage {
+        grid-template-columns: 1fr 1fr; grid-template-areas: "left right" "phone phone";
+        gap: 28px 16px; margin-top: 40px;
+    }
+    .hero-stage::before { top: 70%; width: 520px; height: 520px; }
+    .hero-feats-left { grid-area: left; }
+    .hero-feats-right { grid-area: right; }
+    .hero-phones { grid-area: phone; }
+    .hero-feats, .hero-feats-left, .hero-feats-right { text-align: center; align-items: center; gap: 24px; padding-bottom: 0; }
+    .hero-feats-left li { align-items: center; }
+    .hero-feats li { align-items: center; }
+    .hero-feats svg { width: 26px; height: 26px; margin-bottom: 4px; }
+    .hero-feats b { font-size: 17px; }
+    .hero-feats span { font-size: 14px; }
 
     .section { padding: 72px 0 80px; }
     .section-title, .contact-title { font-size: 40px; }
@@ -581,7 +628,7 @@ section[id], [id^="p-"] { scroll-margin-top: 60px; }
     .segmented button { padding: 6px 14px; }
     .chapternav-items a { padding: 8px 10px 6px; }
     .hero-sub { font-size: 19px; }
-    .hero-phones { height: 330px; gap: 12px; }
+    .hero-phones { height: 330px; }
     .hero-phone.main { height: 330px; }
     .hero .cta-row { gap: 12px; }
     .section-title, .contact-title { font-size: 32px; }
