@@ -24,7 +24,9 @@ def icon(path):
     im = Image.open(os.path.join(ROOT, path)).convert('RGB').resize((900, 900), Image.LANCZOS)
     return rounded(im, 200)
 
-ICONS = [icon('images/lastbrick_icon.jpg'), icon('images/mindolock_icon.jpg'), icon('images/arrowescape_icon.jpg')]
+# Left to right in the final row
+ICONS = [icon('images/lastbrick_icon.jpg'), icon('images/mindolock_icon.jpg'), icon('images/killcode_icon.webp'), icon('images/arrowescape_icon.jpg')]
+SLOTS = [-1.5, -0.5, 0.5, 1.5]
 POSTERS = [poster('images/lastbrick_ss1.jpg'), poster('images/mindolock_ss1.jpg'), poster('images/screenshot3.jpg')]
 
 def glow(color, size=600):
@@ -50,10 +52,10 @@ def place(canvas, img, cx, cy, h, rot=0, alpha=1.0, bright=1.0):
 
 # Layout keyframes, in units of u (shorter side)
 if portrait:
-    L = dict(row_y=.5, row_gap=.33, row_size=.27, top_y=.085 * H / u, top_gap=.17, top_size=.12,
+    L = dict(row_y=.5, row_gap=.25, row_size=.2, top_y=.085 * H / u, top_gap=.17, top_size=.12, start_size=.78,
              post_y=.56 * H / u, post_c=1.02, post_s=.86, side_x1=.40, side_x2=.50, rot1=6, rot2=9)
 else:
-    L = dict(row_y=.5, row_gap=.34, row_size=.26, top_y=.12, top_gap=.15, top_size=.11,
+    L = dict(row_y=.5, row_gap=.3, row_size=.24, top_y=.12, top_gap=.15, top_size=.11, start_size=.78,
              post_y=.6, post_c=.68, post_s=.58, side_x1=.44, side_x2=.62, rot1=6, rot2=10)
 
 for f in range(FRAMES):
@@ -65,10 +67,10 @@ for f in range(FRAMES):
     def C(x, y): return cx0 + (x - cx0) * cam, cy0 + (y - cy0) * cam
 
     # Glows behind the icons / posters
-    gk = k1 * (1 - .4 * k2)
+    gk = lerp(.45, 1, k1) * (1 - .4 * k2)
     for i, g in enumerate(GLOWS):
         off = (i - 1) * lerp(L['row_gap'], L['side_x2'], k2) * u
-        gy = lerp(L['row_y'] * u, L['post_y'] * u, k2)
+        gy = lerp(L['row_y'] * u if not portrait else H / 2, L['post_y'] * u, k2)
         place(canvas, g, *C(cx0 + off, gy), u * lerp(.9, 1.3, k2) * cam, alpha=gk * (.55 if i != 1 else .7))
 
     # Posters rise and fan out
@@ -84,20 +86,24 @@ for f in range(FRAMES):
             br = lerp(.55, .85, k3)
         place(canvas, POSTERS[i], *C(x, y), h * cam, rot, alpha=k2, bright=br)
 
-    # Icons: hero zoom-out, then a row, then up to the top
-    for i in (0, 2, 1):
-        side = i - 1
-        if side == 0:
-            size = lerp(1.9, L["row_size"], k1) * u
-            x = cx0
-        else:
-            size = L['row_size'] * u
-            x = cx0 + side * lerp(1.1 * W / u, L['row_gap'], k1) * u
+    # Icons: Mindolock starts large with its neighbours peeking in, then all
+    # four settle into a row, then move up to the top
+    for i in (3, 0, 2, 1):
+        slot = SLOTS[i]
         y = L['row_y'] * u if not portrait else H / 2
+        if i == 1:    # Mindolock
+            size = lerp(L['start_size'], L['row_size'], k1) * u
+            x0, a = cx0, 1
+        elif i == 2:  # Kill Code slides out from behind Mindolock
+            size = L['row_size'] * u
+            x0, a = cx0, k1
+        else:         # Last Brick / Arrow Escape start at the edges
+            size = L['row_size'] * u
+            x0, a = cx0 + (1 if slot > 0 else -1) * .46 * W, 1
+        x = lerp(x0, cx0 + slot * L['row_gap'] * u, k1)
         size = lerp(size, L['top_size'] * u, k2)
-        x = lerp(x, cx0 + side * L['top_gap'] * u, k2)
+        x = lerp(x, cx0 + slot * L['top_gap'] * u, k2)
         y = lerp(y, L['top_y'] * u, k2)
-        a = 1 if side == 0 else k1
         place(canvas, ICONS[i], *C(x, y), size * cam, alpha=a)
 
     canvas.convert('RGB').save(f'{OUT}/f{f:04d}.jpg', quality=92)
