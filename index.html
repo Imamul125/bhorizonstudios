@@ -7,7 +7,8 @@
     <meta name="description" content="BHorizon Studios is an indie studio crafting mobile games and apps, including the Mindolock brain training app, Last Brick and Arrow Escape Time Trap.">
     <meta name="keywords" content="BHorizon Studios, indie game studio, mobile games, mobile apps, puzzle games, brain training app, Mindolock, Last Brick, Arrow Escape Time Trap">
     <meta name="author" content="BHorizon Studios">
-    <meta name="theme-color" content="#06070a">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="color-scheme" content="light">
     <meta name="google-site-verification" content="SRwXmnFms2iyLD_WMo2_tKZxyJA9gge3lx7Fp7iQSiI" />
 
     <!-- Open Graph -->
@@ -16,299 +17,365 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="images/screenshot1.jpg">
 
-    <!-- Fonts -->
+    <!-- Fonts: system font first (SF Pro on Apple devices), Inter everywhere else -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <canvas id="bgCanvas" aria-hidden="true"></canvas>
-    <div class="grain" aria-hidden="true"></div>
+    <!-- Icon sprite -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></symbol>
+            <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></symbol>
+            <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M12 6v12M6 12h12"/></symbol>
+            <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M7 7l10 10M17 7L7 17"/></symbol>
+            <symbol id="i-target" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></g></symbol>
+            <symbol id="i-memory" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.6" fill="currentColor"/></g></symbol>
+            <symbol id="i-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+            <symbol id="i-chart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 20V13M10 20V8M15 20v-5M20 20V4"/></g></symbol>
+            <symbol id="i-brick" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="14" width="18" height="6" rx="1.2"/><rect x="5" y="8" width="14" height="6" rx="1.2"/><rect x="8" y="2.5" width="8" height="5.5" rx="1.2"/></g></symbol>
+            <symbol id="i-burst" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M12 2.5l2.2 5.3 5.6-1.8-2.6 5.2 4.3 3.8-5.7.6.3 5.9L12 19.6l-4.1 3.9.3-5.9-5.7-.6 4.3-3.8L4.2 6l5.6 1.8z"/></symbol>
+            <symbol id="i-timer" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="13.5" r="8"/><path d="M12 9.5v4l2.5 2M9.5 2.5h5M19 6l1.5-1.5"/></g></symbol>
+            <symbol id="i-trophy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M7 3.5h10v5a5 5 0 0 1-10 0z"/><path d="M7 5.5H3.5a3.5 3.5 0 0 0 3.8 4.4M17 5.5h3.5a3.5 3.5 0 0 1-3.8 4.4M12 13.5v4M8 20.5h8M9.5 17.5h5"/></g></symbol>
+            <symbol id="i-bulb" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17.5h6M10 21h4M8.5 14.5a6.5 6.5 0 1 1 7 0c-.6.5-.9 1.2-.9 1.9v1.1H9.4v-1.1c0-.7-.3-1.4-.9-1.9z"/></g></symbol>
+            <symbol id="i-maze" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M7 7h6v4M17 7v10h-6M7 11v6M11 11h2"/></g></symbol>
+            <symbol id="i-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path stroke-linecap="round" d="M10.5 5.5h3"/></g></symbol>
+            <symbol id="i-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.3a4.3 4.3 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20z"/></symbol>
+            <symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="6.5" height="11" rx="1.5"/><rect x="13.5" y="3" width="6.5" height="11" rx="1.5"/><path stroke-linecap="round" d="M4 18h16M4 21h10"/></g></symbol>
+        </defs>
+    </svg>
 
-    <!-- ═══════════════ NAV ═══════════════ -->
-    <header class="nav" id="navbar">
-        <a href="#hero" class="nav-brand">
-            <span class="brand-logo">BH</span>
-            <span class="brand-text">BHorizon<span>Studios</span></span>
-        </a>
-        <nav class="nav-links" aria-label="Main">
-            <a href="#apps">Apps</a>
-            <a href="#games">Games</a>
+    <!-- ═══════════════ GLOBAL NAV ═══════════════ -->
+    <header class="gnav" id="gnav">
+        <div class="gnav-inner">
+            <a href="#top" class="gnav-brand" aria-label="BHorizon Studios home">
+                <span class="brand-mark">BH</span>
+            </a>
+            <nav class="gnav-links" aria-label="Main">
+                <a href="#lineup">Lineup</a>
+                <a href="#highlights">Highlights</a>
+                <a href="#screens">Screens</a>
+                <a href="#studio">Studio</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <a href="https://play.google.com/store/apps/dev?id=7368937019671498498" target="_blank" rel="noopener" class="gnav-icon" aria-label="BHorizon Studios on Google Play">
+                <svg width="15" height="15" aria-hidden="true"><use href="#i-play"/></svg>
+            </a>
+            <button class="gnav-burger" id="gnavBurger" aria-label="Menu" aria-expanded="false" aria-controls="gnavMenu">
+                <span></span><span></span>
+            </button>
+        </div>
+        <nav class="gnav-menu" id="gnavMenu" aria-label="Mobile">
+            <a href="#lineup">Lineup</a>
+            <a href="#highlights">Highlights</a>
+            <a href="#screens">Screens</a>
             <a href="#studio">Studio</a>
             <a href="#contact">Contact</a>
         </nav>
-        <a href="https://play.google.com/store/apps/dev?id=7368937019671498498" target="_blank" rel="noopener" class="btn btn-sm btn-glass nav-cta">
-            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
-            Google Play
-        </a>
-        <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
-            <span></span><span></span>
-        </button>
     </header>
 
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#apps">Apps</a>
-        <a href="#games">Games</a>
-        <a href="#studio">Studio</a>
-        <a href="#contact">Contact</a>
+    <!-- ═══════════════ LOCAL NAV (sticky) ═══════════════ -->
+    <div class="localnav" id="localnav">
+        <div class="wrap localnav-inner">
+            <a href="#top" class="localnav-title">BHorizon Studios</a>
+            <div class="localnav-actions">
+                <a href="#lineup" class="localnav-link">Overview</a>
+                <a href="https://play.google.com/store/apps/dev?id=7368937019671498498" target="_blank" rel="noopener" class="pill pill-sm">Download</a>
+            </div>
+        </div>
     </div>
 
-    <main>
-        <!-- ═══════════════ HERO ═══════════════ -->
-        <section class="hero" id="hero">
-            <div class="aurora" aria-hidden="true">
-                <span class="aurora-blob a1"></span>
-                <span class="aurora-blob a2"></span>
-                <span class="aurora-blob a3"></span>
-            </div>
-            <div class="hero-grid-bg" aria-hidden="true"></div>
-
-            <div class="container hero-layout">
-                <div class="hero-copy">
-                    <a href="#mindolock" class="hero-chip">
-                        <span class="chip-new">NEW</span>
-                        Mindolock is now on Google Play
-                        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/></svg>
+    <main id="top">
+        <!-- ═══════════════ CHAPTER NAV ═══════════════ -->
+        <nav class="chapternav" aria-label="Products">
+            <ul class="chapternav-items">
+                <li>
+                    <a href="#p-mindolock">
+                        <img src="images/mindolock_icon.jpg" alt="" width="54" height="54">
+                        <span>Mindolock</span>
+                        <em>New</em>
                     </a>
-                    <h1 class="hero-title">
-                        Games that <span class="grad grad-warm">thrill.</span><br>
-                        Apps that <span class="grad grad-cool">sharpen.</span>
-                    </h1>
-                    <p class="hero-subtitle">BHorizon Studios is an indie studio building mobile experiences you'll keep coming back to — from physics puzzles and time-bending mazes to daily brain training.</p>
-                    <div class="hero-buttons">
-                        <a href="#apps" class="btn btn-primary magnetic">
-                            Explore our work
-                            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/></svg>
-                        </a>
-                        <a href="#contact" class="btn btn-glass magnetic">Get in touch</a>
-                    </div>
-                    <div class="hero-meta">
-                        <div class="avatar-stack">
-                            <img src="images/mindolock_icon.jpg" alt="Mindolock icon">
-                            <img src="images/lastbrick_icon.jpg" alt="Last Brick icon">
-                            <img src="images/arrowescape_icon.jpg" alt="Arrow Escape icon">
-                        </div>
-                        <p><strong>3 titles</strong> on Google Play · iOS coming soon</p>
-                    </div>
-                </div>
+                </li>
+                <li>
+                    <a href="#p-lastbrick">
+                        <img src="images/lastbrick_icon.jpg" alt="" width="54" height="54">
+                        <span>Last Brick</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#p-arrowescape">
+                        <img src="images/arrowescape_icon.jpg" alt="" width="54" height="54">
+                        <span>Arrow Escape</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#screens">
+                        <span class="chapternav-glyph"><svg width="28" height="28" aria-hidden="true"><use href="#i-grid"/></svg></span>
+                        <span>Screens</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://play.google.com/store/apps/dev?id=7368937019671498498" target="_blank" rel="noopener">
+                        <span class="chapternav-glyph"><svg width="24" height="24" aria-hidden="true"><use href="#i-play"/></svg></span>
+                        <span>Google Play</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
-                <div class="hero-visual" id="heroVisual">
-                    <div class="hero-stack">
-                        <figure class="stack-card stack-left" data-depth="18">
-                            <img src="images/lastbrick_ss1.jpg" alt="Last Brick gameplay">
-                        </figure>
-                        <figure class="stack-card stack-right" data-depth="18">
-                            <img src="images/screenshot3.jpg" alt="Arrow Escape Time Trap poster">
-                        </figure>
-                        <figure class="stack-card stack-center" data-depth="30">
-                            <img src="images/mindolock_ss1.jpg" alt="Mindolock brain dashboard">
-                        </figure>
-                        <div class="float-chip chip-a" data-depth="45"><img src="images/mindolock_icon.jpg" alt=""> <span><b>Mindolock</b>Brain training</span></div>
-                        <div class="float-chip chip-b" data-depth="40"><img src="images/lastbrick_icon.jpg" alt=""> <span><b>Last Brick</b>Physics puzzle</span></div>
-                        <div class="float-chip chip-c" data-depth="50"><img src="images/arrowescape_icon.jpg" alt=""> <span><b>Arrow Escape</b>Timed mazes</span></div>
-                    </div>
+        <!-- ═══════════════ INTRO ═══════════════ -->
+        <section class="intro wrap">
+            <h1 class="intro-title">Games &amp; Apps</h1>
+            <p class="intro-tag">Made to be played.<br>Built to be loved.</p>
+        </section>
+
+        <!-- ═══════════════ HERO TILE ═══════════════ -->
+        <section class="hero" aria-labelledby="heroTitle">
+            <div class="hero-copy">
+                <p class="eyebrow eyebrow-new">New</p>
+                <h2 class="hero-title" id="heroTitle">Mindolock</h2>
+                <p class="hero-sub">Train your brain. Unlock your potential.</p>
+                <div class="cta-row">
+                    <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.mindolock" target="_blank" rel="noopener" class="pill">Get it on Google Play</a>
+                    <a href="#p-mindolock" class="pill pill-outline">Learn more</a>
                 </div>
+            </div>
+            <div class="hero-phones" aria-hidden="true">
+                <img src="images/mindolock_ss2.jpg" alt="" class="hero-phone side">
+                <img src="images/mindolock_ss1.jpg" alt="" class="hero-phone main">
+                <img src="images/mindolock_ss4.jpg" alt="" class="hero-phone side">
             </div>
         </section>
 
-        <!-- ═══════════════ MARQUEE ═══════════════ -->
-        <div class="marquee" aria-hidden="true">
-            <div class="marquee-track">
-                <span>Brain Training</span><i>✦</i><span>Puzzle Games</span><i>✦</i><span>Mobile Apps</span><i>✦</i><span>3D Worlds</span><i>✦</i><span>Indie Studio</span><i>✦</i>
-                <span>Brain Training</span><i>✦</i><span>Puzzle Games</span><i>✦</i><span>Mobile Apps</span><i>✦</i><span>3D Worlds</span><i>✦</i><span>Indie Studio</span><i>✦</i>
+        <!-- ═══════════════ LINEUP ═══════════════ -->
+        <section class="section" id="lineup">
+            <div class="wrap section-head">
+                <h2 class="section-title">Explore the lineup.</h2>
+                <a href="https://play.google.com/store/apps/dev?id=7368937019671498498" target="_blank" rel="noopener" class="more-link">Follow on Google Play <svg width="12" height="12" aria-hidden="true"><use href="#i-chevron"/></svg></a>
             </div>
-        </div>
 
-        <!-- ═══════════════ APPS ═══════════════ -->
-        <section class="section" id="apps">
-            <div class="container">
-                <div class="section-head reveal">
-                    <span class="section-index">01 — Apps</span>
-                    <h2 class="section-title">Tools for a <span class="grad grad-cool">sharper mind</span></h2>
-                    <p class="section-subtitle">Apps designed to make small daily habits add up to real progress.</p>
+            <div class="wrap">
+                <div class="segmented" role="tablist" aria-label="Filter lineup" id="lineupFilter">
+                    <button role="tab" aria-selected="true" data-filter="all">All</button>
+                    <button role="tab" aria-selected="false" data-filter="app">Apps</button>
+                    <button role="tab" aria-selected="false" data-filter="game">Games</button>
                 </div>
+            </div>
 
-                <article class="product product-app spot reveal" id="mindolock" style="--accent: #22d3a6; --accent-2: #0ea5c6;">
-                    <div class="product-info">
-                        <div class="product-id">
-                            <img src="images/mindolock_icon.jpg" alt="Mindolock app icon" class="product-icon">
-                            <div>
-                                <span class="product-kind">App · Health &amp; Fitness</span>
-                                <h3 class="product-title">Mindolock</h3>
-                            </div>
-                        </div>
-                        <p class="product-tagline">Train your brain. Unlock your potential.</p>
-                        <p class="product-desc">Short, focused daily workouts that sharpen your focus, memory, observation and patience. Track your brain stats, build streaks and watch small exercises turn into big results.</p>
-
-                        <ul class="feature-grid">
-                            <li><span class="f-icon">🎯</span><div><b>Focus</b><small>Rhythm &amp; timing drills</small></div></li>
-                            <li><span class="f-icon">🧩</span><div><b>Memory</b><small>Sequence &amp; name recall</small></div></li>
-                            <li><span class="f-icon">👁️</span><div><b>Observation</b><small>Visual scene scanning</small></div></li>
-                            <li><span class="f-icon">📊</span><div><b>Brain stats</b><small>Streaks &amp; insights</small></div></li>
-                        </ul>
-
-                        <div class="store-row">
-                            <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.mindolock" class="store-btn store-play magnetic" target="_blank" rel="noopener">
-                                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
-                                <span class="store-text"><small>Get it on</small>Google Play</span>
-                            </a>
-                            <!-- iOS: set href to the App Store link, remove class "store-soon" and aria-disabled, change "Coming soon on" to "Download on the" -->
-                            <a href="#" class="store-btn store-apple store-soon" aria-disabled="true" title="Mindolock is coming soon to the App Store">
-                                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
-                                <span class="store-text"><small>Coming soon on</small>App Store</span>
-                            </a>
-                        </div>
+            <div class="lineup" id="lineupGrid">
+                <!-- Mindolock -->
+                <article class="model reveal" id="p-mindolock" data-kind="app">
+                    <button class="model-media" data-lightbox="mindolock" aria-label="View Mindolock screenshots">
+                        <img src="images/mindolock_ss1.jpg" alt="Mindolock brain dashboard" loading="lazy">
+                    </button>
+                    <img src="images/mindolock_icon.jpg" alt="" class="model-icon" loading="lazy">
+                    <p class="eyebrow eyebrow-new">New</p>
+                    <h3 class="model-name">Mindolock</h3>
+                    <p class="model-tagline">Short daily workouts for focus, memory and observation.</p>
+                    <p class="model-meta">App · Health &amp; Fitness</p>
+                    <div class="cta-row">
+                        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.mindolock" target="_blank" rel="noopener" class="pill">Download</a>
+                        <a href="#s-mindolock" class="text-link" data-screens="mindolock">Screens <svg width="11" height="11" aria-hidden="true"><use href="#i-chevron"/></svg></a>
                     </div>
+                    <!-- iOS: replace this line with an App Store link when it goes live -->
+                    <p class="model-soon">Coming soon to the App Store</p>
+                    <ul class="model-features">
+                        <li><svg width="28" height="28" aria-hidden="true"><use href="#i-target"/></svg><b>Focus</b><span>Rhythm and timing drills</span></li>
+                        <li><svg width="28" height="28" aria-hidden="true"><use href="#i-memory"/></svg><b>Memory</b><span>Sequence and name recall</span></li>
+                        <li><svg width="28" height="28" aria-hidden="true"><use href="#i-eye"/></svg><b>Observation</b><span>Visual scene scanning</span></li>
+                        <li><svg width="28" height="28" aria-hidden="true"><use href="#i-chart"/></svg><b>Brain stats</b><span>Streaks and insights</span></li>
+                    </ul>
+                </article>
 
-                    <div class="product-media">
-                        <div class="poster-fan" data-gallery="mindolock" id="mindolockFan">
-                            <button class="poster p1" data-index="2" aria-label="Open screenshot"><img src="images/mindolock_ss2.jpg" alt="Mindolock sequence memory exercise" loading="lazy"></button>
-                            <button class="poster p2" data-index="1" aria-label="Open screenshot"><img src="images/mindolock_ss4.jpg" alt="Mindolock focus training exercise" loading="lazy"></button>
-                            <button class="poster p3" data-index="0" aria-label="Open screenshot"><img src="images/mindolock_ss1.jpg" alt="Mindolock brain dashboard" loading="lazy"></button>
-                        </div>
-                        <div class="fan-dots" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
+                <!-- Last Brick -->
+                <article class="model reveal" id="p-lastbrick" data-kind="game">
+                    <button class="model-media" data-lightbox="lastbrick" aria-label="View Last Brick screenshots">
+                        <img src="images/lastbrick_ss1.jpg" alt="Last Brick gameplay" loading="lazy">
+                    </button>
+                    <img src="images/lastbrick_icon.jpg" alt="" class="model-icon" loading="lazy">
+                    <p class="eyebrow">&nbsp;</p>
+                    <h3 class="model-name">Last Brick</h3>
+                    <p class="model-tagline">Break the bricks. Lower the cat. Don't let it fall.</p>
+                    <p class="model-meta">Game · Physics Puzzle</p>
+                    <div class="cta-row">
+                        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.lastbrick" target="_blank" rel="noopener" class="pill">Download</a>
+                        <a href="#s-lastbrick" class="text-link" data-screens="lastbrick">Screens <svg width="11" height="11" aria-hidden="true"><use href="#i-chevron"/></svg></a>
                     </div>
+                    <!-- iOS: replace this line with an App Store link when it goes live -->
+                    <p class="model-soon">Coming soon to the App Store</p>
+                    <ul class="model-features">
+                        <li><svg width="28" height="28" aria-hidden="true"><use href="#i-heart"/></svg><b>Cute cat</b><span>Keep it safe all the way down</span></li>
+                        <li><svg width="28" height="28" aria-hidden="true"><use href="#i-burst"/></svg><b>Explosive bricks</b><span>Every tap changes the tower</span></li>
+                        <li><svg width="28" height="28" aria-hidden="true"><use href="#i-timer"/></svg><b>Timed levels</b><span>Timing, logic and physics</span></li>
+                        <li><svg width="28" height="28" aria-hidden="true"><use href="#i-brick"/></svg><b>Tricky towers</b><span>Levels that keep getting harder</span></li>
+                    </ul>
+                </article>
+
+                <!-- Arrow Escape -->
+                <article class="model reveal" id="p-arrowescape" data-kind="game">
+                    <button class="model-media" data-lightbox="arrowescape" aria-label="View Arrow Escape screenshots">
+                        <img src="images/screenshot3.jpg" alt="Arrow Escape Time Trap gameplay" loading="lazy">
+                    </button>
+                    <img src="images/arrowescape_icon.jpg" alt="" class="model-icon" loading="lazy">
+                    <p class="eyebrow">&nbsp;</p>
+                    <h3 class="model-name">Arrow Escape Time Trap</h3>
+                    <p class="model-tagline">Navigate the maze. Beat the clock.</p>
+                    <p class="model-meta">Game · Puzzle</p>
+                    <div class="cta-row">
+                        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.arrowescape" target="_blank" rel="noopener" class="pill" id="download-arrow-escape">Download</a>
+                        <a href="#s-arrowescape" class="text-link" data-screens="arrowescape">Screens <svg width="11" height="11" aria-hidden="true"><use href="#i-chevron"/></svg></a>
+                    </div>
+                    <!-- iOS: replace this line with an App Store link when it goes live -->
+                    <p class="model-soon">Coming soon to the App Store</p>
+                    <ul class="model-features">
+                        <li><svg width="28" height="28" aria-hidden="true"><use href="#i-maze"/></svg><b>100+ levels</b><span>Handcrafted mazes</span></li>
+                        <li><svg width="28" height="28" aria-hidden="true"><use href="#i-trophy"/></svg><b>Leaderboards</b><span>Compete worldwide</span></li>
+                        <li><svg width="28" height="28" aria-hidden="true"><use href="#i-bulb"/></svg><b>Hints</b><span>A nudge when you're stuck</span></li>
+                        <li><svg width="28" height="28" aria-hidden="true"><use href="#i-timer"/></svg><b>Against the clock</b><span>Stunning 3D metallic visuals</span></li>
+                    </ul>
                 </article>
             </div>
         </section>
 
-        <!-- ═══════════════ GAMES ═══════════════ -->
-        <section class="section" id="games">
-            <div class="container">
-                <div class="section-head reveal">
-                    <span class="section-index">02 — Games</span>
-                    <h2 class="section-title">Games that <span class="grad grad-warm">thrill</span></h2>
-                    <p class="section-subtitle">Handcrafted puzzles with a twist of physics, pressure and polish.</p>
-                </div>
+        <!-- ═══════════════ HIGHLIGHTS GALLERY ═══════════════ -->
+        <section class="section section-alt" id="highlights">
+            <div class="wrap section-head">
+                <h2 class="section-title">Get to know BHorizon.</h2>
+            </div>
 
-                <div class="games-grid">
-                    <!-- Last Brick -->
-                    <article class="game-card spot tilt reveal" style="--accent: #ff7a2f; --accent-2: #ffb347;">
-                        <div class="game-cover">
-                            <div class="phones" data-gallery="lastbrick">
-                                <button class="phone ph-l" data-index="1"><img src="images/lastbrick_ss2.jpg" alt="Last Brick level" loading="lazy"></button>
-                                <button class="phone ph-r" data-index="2"><img src="images/lastbrick_ss3.jpg" alt="Last Brick explosion" loading="lazy"></button>
-                                <button class="phone ph-c" data-index="0"><img src="images/lastbrick_ss1.jpg" alt="Last Brick gameplay" loading="lazy"></button>
-                            </div>
+            <div class="gallery" id="gallery" tabindex="-1">
+                <ul class="gallery-track">
+                    <li class="card reveal">
+                        <div class="card-copy">
+                            <p class="card-eyebrow">Mindolock</p>
+                            <h3 class="card-title">Small daily workouts. Big results.</h3>
                         </div>
-                        <div class="game-body">
-                            <div class="product-id">
-                                <img src="images/lastbrick_icon.jpg" alt="Last Brick icon" class="product-icon sm">
-                                <div>
-                                    <span class="product-kind">Game · Physics Puzzle</span>
-                                    <h3 class="product-title sm">Last Brick</h3>
-                                </div>
-                            </div>
-                            <p class="product-desc">Tap and break bricks to safely lower the cat to the ground. Test your timing, logic and physics skills across increasingly tricky levels — just don't let the cat fall!</p>
-                            <div class="tags">
-                                <span>😻 Cute cat</span><span>💥 Explosive bricks</span><span>⏱️ Timed levels</span>
-                            </div>
-                            <div class="store-row">
-                                <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.lastbrick" class="store-btn store-play magnetic" target="_blank" rel="noopener">
-                                    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
-                                    <span class="store-text"><small>Get it on</small>Google Play</span>
-                                </a>
-                                <!-- iOS: set href to the App Store link, remove class "store-soon" and aria-disabled, change "Coming soon on" to "Download on the" -->
-                                <a href="#" class="store-btn store-apple store-soon" aria-disabled="true" title="Last Brick is coming soon to the App Store">
-                                    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
-                                    <span class="store-text"><small>Coming soon on</small>App Store</span>
-                                </a>
-                            </div>
+                        <img src="images/mindolock_ss1.jpg" alt="Mindolock brain dashboard" loading="lazy">
+                        <button class="card-plus" data-modal="m-mindolock" aria-label="More about Mindolock"><svg width="18" height="18" aria-hidden="true"><use href="#i-plus"/></svg></button>
+                    </li>
+                    <li class="card reveal">
+                        <div class="card-copy">
+                            <p class="card-eyebrow">Brain stats</p>
+                            <h3 class="card-title">Know your brain. Watch it grow.</h3>
                         </div>
-                    </article>
+                        <img src="images/mindolock_ss3.jpg" alt="Mindolock brain diagnostics" loading="lazy">
+                        <button class="card-plus" data-modal="m-stats" aria-label="More about brain stats"><svg width="18" height="18" aria-hidden="true"><use href="#i-plus"/></svg></button>
+                    </li>
+                    <li class="card reveal">
+                        <div class="card-copy">
+                            <p class="card-eyebrow">Last Brick</p>
+                            <h3 class="card-title">Break the bricks. Save the cat.</h3>
+                        </div>
+                        <img src="images/lastbrick_ss1.jpg" alt="Last Brick gameplay" loading="lazy">
+                        <button class="card-plus" data-modal="m-lastbrick" aria-label="More about Last Brick"><svg width="18" height="18" aria-hidden="true"><use href="#i-plus"/></svg></button>
+                    </li>
+                    <li class="card reveal">
+                        <div class="card-copy">
+                            <p class="card-eyebrow">Physics</p>
+                            <h3 class="card-title">One tap. Total chaos.</h3>
+                        </div>
+                        <img src="images/3rd.png" alt="Last Brick explosion" loading="lazy">
+                        <button class="card-plus" data-modal="m-physics" aria-label="More about Last Brick physics"><svg width="18" height="18" aria-hidden="true"><use href="#i-plus"/></svg></button>
+                    </li>
+                    <li class="card reveal">
+                        <div class="card-copy">
+                            <p class="card-eyebrow">Arrow Escape</p>
+                            <h3 class="card-title">Escape the maze. Beat the clock.</h3>
+                        </div>
+                        <img src="images/screenshot3.jpg" alt="Arrow Escape gameplay" loading="lazy">
+                        <button class="card-plus" data-modal="m-arrowescape" aria-label="More about Arrow Escape"><svg width="18" height="18" aria-hidden="true"><use href="#i-plus"/></svg></button>
+                    </li>
+                    <li class="card reveal">
+                        <div class="card-copy">
+                            <p class="card-eyebrow">Achievements</p>
+                            <h3 class="card-title">Complete challenges. Earn glory.</h3>
+                        </div>
+                        <img src="images/screenshot2.jpg" alt="Arrow Escape achievements" loading="lazy">
+                        <button class="card-plus" data-modal="m-glory" aria-label="More about achievements and leaderboards"><svg width="18" height="18" aria-hidden="true"><use href="#i-plus"/></svg></button>
+                    </li>
+                </ul>
+            </div>
+            <div class="wrap paddles">
+                <button class="paddle" id="paddlePrev" aria-label="Previous" disabled><svg width="18" height="18" aria-hidden="true" style="transform:scaleX(-1)"><use href="#i-chevron"/></svg></button>
+                <button class="paddle" id="paddleNext" aria-label="Next"><svg width="18" height="18" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+            </div>
+        </section>
 
-                    <!-- Arrow Escape -->
-                    <article class="game-card spot tilt reveal" style="--accent: #f5a524; --accent-2: #ffd36e;">
-                        <div class="game-cover">
-                            <div class="phones" data-gallery="arrow">
-                                <button class="phone ph-l" data-index="1"><img src="images/screenshot2.jpg" alt="Arrow Escape achievements" loading="lazy"></button>
-                                <button class="phone ph-r" data-index="2"><img src="images/screenshot4.jpg" alt="Arrow Escape leaderboards" loading="lazy"></button>
-                                <button class="phone ph-c" data-index="0"><img src="images/screenshot3.jpg" alt="Arrow Escape gameplay" loading="lazy"></button>
-                            </div>
-                        </div>
-                        <div class="game-body">
-                            <div class="product-id">
-                                <img src="images/arrowescape_icon.jpg" alt="Arrow Escape icon" class="product-icon sm">
-                                <div>
-                                    <span class="product-kind">Game · Puzzle</span>
-                                    <h3 class="product-title sm">Arrow Escape Time Trap</h3>
-                                </div>
-                            </div>
-                            <p class="product-desc">Navigate arrows through intricate mazes and beat the clock. Handcrafted levels, hints, global leaderboards and stunning 3D metallic visuals — can you escape them all?</p>
-                            <div class="tags">
-                                <span>🧩 100+ levels</span><span>🏆 Leaderboards</span><span>💡 Hints</span>
-                            </div>
-                            <div class="store-row">
-                                <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.arrowescape" class="store-btn store-play magnetic" target="_blank" rel="noopener" id="download-arrow-escape">
-                                    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
-                                    <span class="store-text"><small>Get it on</small>Google Play</span>
-                                </a>
-                                <!-- iOS: set href to the App Store link, remove class "store-soon" and aria-disabled, change "Coming soon on" to "Download on the" -->
-                                <a href="#" class="store-btn store-apple store-soon" aria-disabled="true" title="Arrow Escape Time Trap is coming soon to the App Store">
-                                    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
-                                    <span class="store-text"><small>Coming soon on</small>App Store</span>
-                                </a>
-                            </div>
-                        </div>
-                    </article>
+        <!-- ═══════════════ SCREENS ═══════════════ -->
+        <section class="section" id="screens">
+            <div class="wrap section-head">
+                <h2 class="section-title">Take a closer look.</h2>
+            </div>
+            <div class="wrap">
+                <div class="segmented" role="tablist" aria-label="Choose a title" id="screensTabs">
+                    <button role="tab" id="t-mindolock" aria-selected="true" aria-controls="s-mindolock">Mindolock</button>
+                    <button role="tab" id="t-lastbrick" aria-selected="false" aria-controls="s-lastbrick">Last Brick</button>
+                    <button role="tab" id="t-arrowescape" aria-selected="false" aria-controls="s-arrowescape">Arrow Escape</button>
                 </div>
+            </div>
 
-                <div class="lab-banner spot reveal">
-                    <div class="lab-orb" aria-hidden="true"></div>
-                    <div>
-                        <span class="section-index">In the lab</span>
-                        <h3>More games &amp; apps are on the way.</h3>
-                        <p>Follow us on Google Play to be first in line when the next title drops — iOS versions are on the way too.</p>
-                    </div>
-                    <a href="https://play.google.com/store/apps/dev?id=7368937019671498498" class="btn btn-glass magnetic" target="_blank" rel="noopener">Follow on Google Play →</a>
-                </div>
+            <div class="screens-panel" id="s-mindolock" role="tabpanel" aria-labelledby="t-mindolock" data-gallery="mindolock">
+                <button class="shot" data-index="0"><img src="images/mindolock_ss1.jpg" alt="Mindolock brain dashboard" loading="lazy"></button>
+                <button class="shot" data-index="1"><img src="images/mindolock_ss4.jpg" alt="Mindolock focus training exercise" loading="lazy"></button>
+                <button class="shot" data-index="2"><img src="images/mindolock_ss2.jpg" alt="Mindolock sequence memory exercise" loading="lazy"></button>
+                <button class="shot" data-index="3"><img src="images/mindolock_ss3.jpg" alt="Mindolock brain diagnostics" loading="lazy"></button>
+            </div>
+            <div class="screens-panel" id="s-lastbrick" role="tabpanel" aria-labelledby="t-lastbrick" data-gallery="lastbrick" hidden>
+                <button class="shot" data-index="0"><img src="images/lastbrick_ss1.jpg" alt="Last Brick gameplay" loading="lazy"></button>
+                <button class="shot" data-index="1"><img src="images/lastbrick_ss2.jpg" alt="Last Brick level" loading="lazy"></button>
+                <button class="shot" data-index="2"><img src="images/lastbrick_ss3.jpg" alt="Last Brick tower" loading="lazy"></button>
+                <button class="shot" data-index="3"><img src="images/3rd.png" alt="Last Brick explosion" loading="lazy"></button>
+            </div>
+            <div class="screens-panel" id="s-arrowescape" role="tabpanel" aria-labelledby="t-arrowescape" data-gallery="arrowescape" hidden>
+                <button class="shot" data-index="0"><img src="images/screenshot3.jpg" alt="Arrow Escape gameplay" loading="lazy"></button>
+                <button class="shot" data-index="1"><img src="images/screenshot5.jpg" alt="Arrow Escape levels" loading="lazy"></button>
+                <button class="shot" data-index="2"><img src="images/screenshot2.jpg" alt="Arrow Escape achievements" loading="lazy"></button>
+                <button class="shot" data-index="3"><img src="images/screenshot4.jpg" alt="Arrow Escape leaderboards" loading="lazy"></button>
             </div>
         </section>
 
         <!-- ═══════════════ STUDIO ═══════════════ -->
-        <section class="section" id="studio">
-            <div class="container">
-                <div class="bento">
-                    <div class="bento-card bento-intro spot reveal">
-                        <span class="section-index">03 — Studio</span>
-                        <h2 class="section-title">Small studio.<br><span class="grad grad-gold">Big ideas.</span></h2>
-                        <p>BHorizon Studios is an independent studio crafting beautifully designed mobile experiences. We sweat the details — the feel of a tap, the pace of a level, the satisfaction of a streak — so every title is worth coming back to.</p>
-                    </div>
-                    <div class="bento-card stat spot reveal">
-                        <span class="stat-num"><span class="counter" data-target="3">0</span></span>
-                        <span class="stat-label">Titles published</span>
-                    </div>
-                    <div class="bento-card stat spot reveal">
-                        <span class="stat-num"><span class="counter" data-target="100" data-suffix="+">0</span></span>
-                        <span class="stat-label">Levels crafted</span>
-                    </div>
-                    <div class="bento-card stat spot reveal">
-                        <span class="stat-num">2<small>+</small>1</span>
-                        <span class="stat-label">Games &amp; apps</span>
-                    </div>
-                    <div class="bento-card stat spot reveal">
-                        <span class="stat-num emoji">📱</span>
-                        <span class="stat-label">Android &amp; iOS</span>
-                    </div>
-                </div>
+        <section class="section section-alt" id="studio">
+            <div class="wrap section-head stacked">
+                <h2 class="section-title">Small studio. Big ideas.</h2>
+                <p class="section-lede">BHorizon Studios is an independent studio crafting beautifully designed mobile experiences. We sweat the details — the feel of a tap, the pace of a level, the satisfaction of a streak — so every title is worth coming back to.</p>
             </div>
+            <ul class="why">
+                <li class="why-card reveal">
+                    <svg width="36" height="36" aria-hidden="true" class="why-icon c-blue"><use href="#i-play"/></svg>
+                    <p><b class="c-blue">3 titles on Google Play.</b> Two games and one app, with more on the way.</p>
+                </li>
+                <li class="why-card reveal">
+                    <svg width="36" height="36" aria-hidden="true" class="why-icon c-orange"><use href="#i-maze"/></svg>
+                    <p><b class="c-orange">100+ handcrafted levels.</b> Puzzles tuned by hand, not generated.</p>
+                </li>
+                <li class="why-card reveal">
+                    <svg width="36" height="36" aria-hidden="true" class="why-icon c-green"><use href="#i-phone"/></svg>
+                    <p><b class="c-green">iOS is coming.</b> All of our titles are headed to the App Store.</p>
+                </li>
+                <li class="why-card reveal">
+                    <svg width="36" height="36" aria-hidden="true" class="why-icon c-purple"><use href="#i-chart"/></svg>
+                    <p><b class="c-purple">Progress you can see.</b> Streaks, brain stats, achievements and leaderboards.</p>
+                </li>
+                <li class="why-card reveal">
+                    <svg width="36" height="36" aria-hidden="true" class="why-icon c-pink"><use href="#i-heart"/></svg>
+                    <p><b class="c-pink">Made with care.</b> An indie team that reads every piece of feedback.</p>
+                </li>
+            </ul>
         </section>
 
         <!-- ═══════════════ CONTACT ═══════════════ -->
-        <section class="section" id="contact">
-            <div class="container">
-                <div class="cta spot reveal">
-                    <div class="cta-glow" aria-hidden="true"></div>
-                    <span class="section-index">04 — Contact</span>
-                    <h2 class="cta-title">Let's build something<br><span class="grad grad-warm">people love.</span></h2>
-                    <p class="section-subtitle">Questions, feedback, partnerships or just saying hi — our inbox is open.</p>
-                    <div class="cta-actions">
-                        <a href="mailto:bhorizonstudios@gmail.com" class="btn btn-primary btn-lg magnetic">bhorizonstudios@gmail.com</a>
-                        <button class="btn btn-glass btn-lg" id="copyEmail" data-email="bhorizonstudios@gmail.com">Copy email</button>
-                    </div>
+        <section class="section contact" id="contact">
+            <div class="wrap">
+                <h2 class="contact-title">Let's build something people love.</h2>
+                <p class="section-lede">Questions, feedback, partnerships or just saying hi — our inbox is open.</p>
+                <div class="cta-row center">
+                    <a href="mailto:bhorizonstudios@gmail.com" class="pill pill-lg">bhorizonstudios@gmail.com</a>
+                    <button class="text-link" id="copyEmail" data-email="bhorizonstudios@gmail.com">Copy email</button>
                 </div>
             </div>
         </section>
@@ -316,29 +383,92 @@
 
     <!-- ═══════════════ FOOTER ═══════════════ -->
     <footer class="footer">
-        <div class="container footer-inner">
-            <a href="#hero" class="nav-brand">
-                <span class="brand-logo">BH</span>
-                <span class="brand-text">BHorizon<span>Studios</span></span>
-            </a>
-            <nav class="footer-links" aria-label="Footer">
-                <a href="#apps">Apps</a>
-                <a href="#games">Games</a>
-                <a href="#studio">Studio</a>
-                <a href="https://sites.google.com/view/bhorizonstudios/home" target="_blank" rel="noopener">Privacy Policy</a>
-                <a href="mailto:bhorizonstudios@gmail.com">Contact</a>
-            </nav>
-            <p class="footer-copy">&copy; <span id="year">2026</span> BHorizon Studios. All rights reserved.</p>
+        <div class="wrap">
+            <div class="footer-notes">
+                <p>Google Play and the Google Play logo are trademarks of Google LLC. App Store is a service mark of Apple Inc. iOS versions of our titles are in development; availability will be announced on this page.</p>
+            </div>
+            <div class="footer-dir">
+                <div>
+                    <h3>Apps</h3>
+                    <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.mindolock" target="_blank" rel="noopener">Mindolock</a>
+                </div>
+                <div>
+                    <h3>Games</h3>
+                    <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.lastbrick" target="_blank" rel="noopener">Last Brick</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.arrowescape" target="_blank" rel="noopener">Arrow Escape Time Trap</a>
+                </div>
+                <div>
+                    <h3>Studio</h3>
+                    <a href="#studio">About</a>
+                    <a href="#screens">Screens</a>
+                    <a href="https://play.google.com/store/apps/dev?id=7368937019671498498" target="_blank" rel="noopener">Google Play page</a>
+                </div>
+                <div>
+                    <h3>Contact</h3>
+                    <a href="mailto:bhorizonstudios@gmail.com">Email us</a>
+                    <a href="https://sites.google.com/view/bhorizonstudios/home" target="_blank" rel="noopener">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-legal">
+                <p>Copyright &copy; <span id="year">2026</span> BHorizon Studios. All rights reserved.</p>
+                <nav aria-label="Legal">
+                    <a href="https://sites.google.com/view/bhorizonstudios/home" target="_blank" rel="noopener">Privacy Policy</a>
+                    <a href="mailto:bhorizonstudios@gmail.com">Contact</a>
+                </nav>
+            </div>
         </div>
-        <div class="footer-wordmark" aria-hidden="true">BHORIZON</div>
     </footer>
+
+    <!-- ═══════════════ MODAL CONTENT ═══════════════ -->
+    <template id="m-mindolock">
+        <p class="modal-eyebrow">Mindolock</p>
+        <h2 class="modal-title">Train your brain. Unlock your potential.</h2>
+        <p><b>Short, focused daily workouts</b> that sharpen your focus, memory, observation and patience. Each session takes just a few minutes, so it fits into any day.</p>
+        <p><b>Four ways to train.</b> Rhythm and timing drills for focus, sequence and name recall for memory, and visual scene scanning for observation.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.mindolock" target="_blank" rel="noopener" class="pill">Get it on Google Play</a>
+    </template>
+    <template id="m-stats">
+        <p class="modal-eyebrow">Brain stats</p>
+        <h2 class="modal-title">See small exercises turn into big results.</h2>
+        <p><b>Track your brain stats</b> across every skill you train, build streaks that keep you coming back, and get insights into how you're improving over time.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.mindolock" target="_blank" rel="noopener" class="pill">Get it on Google Play</a>
+    </template>
+    <template id="m-lastbrick">
+        <p class="modal-eyebrow">Last Brick</p>
+        <h2 class="modal-title">Just don't let the cat fall.</h2>
+        <p><b>Tap and break bricks</b> to safely lower the cat to the ground. Every level tests your timing, logic and physics skills — and they keep getting trickier.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.lastbrick" target="_blank" rel="noopener" class="pill">Get it on Google Play</a>
+    </template>
+    <template id="m-physics">
+        <p class="modal-eyebrow">Physics</p>
+        <h2 class="modal-title">Explosive bricks. Timed levels.</h2>
+        <p><b>Every brick you break changes the tower.</b> Some explode, some shift the balance, and the clock is always running. Plan ahead, then tap with confidence.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.lastbrick" target="_blank" rel="noopener" class="pill">Get it on Google Play</a>
+    </template>
+    <template id="m-arrowescape">
+        <p class="modal-eyebrow">Arrow Escape Time Trap</p>
+        <h2 class="modal-title">Can you escape them all?</h2>
+        <p><b>Navigate arrows through intricate mazes</b> and beat the clock. Handcrafted levels, hints when you need them and stunning 3D metallic visuals.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.arrowescape" target="_blank" rel="noopener" class="pill">Get it on Google Play</a>
+    </template>
+    <template id="m-glory">
+        <p class="modal-eyebrow">Achievements &amp; leaderboards</p>
+        <h2 class="modal-title">Achieve. Unlock. Dominate.</h2>
+        <p><b>Earn badges</b> as you clear challenges, then <b>climb the global leaderboards</b> to show your skills to the world.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.bhorizonstudios.arrowescape" target="_blank" rel="noopener" class="pill">Get it on Google Play</a>
+    </template>
+
+    <dialog class="modal" id="modal" aria-labelledby="modalTitle">
+        <button class="modal-close" aria-label="Close"><svg width="16" height="16" aria-hidden="true"><use href="#i-close"/></svg></button>
+        <div class="modal-body"></div>
+    </dialog>
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Screenshot viewer">
-        <button class="lb-btn lb-close" aria-label="Close">✕</button>
-        <button class="lb-btn lb-prev" aria-label="Previous">‹</button>
+        <button class="lb-btn lb-close" aria-label="Close"><svg width="16" height="16" aria-hidden="true"><use href="#i-close"/></svg></button>
+        <button class="lb-btn lb-prev" aria-label="Previous"><svg width="18" height="18" aria-hidden="true" style="transform:scaleX(-1)"><use href="#i-chevron"/></svg></button>
         <img class="lb-img" alt="">
-        <button class="lb-btn lb-next" aria-label="Next">›</button>
+        <button class="lb-btn lb-next" aria-label="Next"><svg width="18" height="18" aria-hidden="true"><use href="#i-chevron"/></svg></button>
         <div class="lb-count"></div>
     </div>
 
